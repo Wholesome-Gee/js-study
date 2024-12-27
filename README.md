@@ -26,7 +26,8 @@
   = _**'build'는 우리 브라우저가 우리의 프로젝트를 해석할 수 있도록 코드난독화를 함**_
   - 터미널에 **'npm run dev'** 를 입력함으로써 개발용 서버 실행 가능
   - 터미널에 **'npm run build'** 를 입력함으로써 브라우저가 프로젝트를 해석할 수 있도록 빌드드
-  - **'.gitignore'** 파일 생성 후 **'.cache/'**, **'dist/'**, **'node_modules/'** 등을 입력
+  - **'.gitignore'** 파일 생성 후 **'.cache/'**, **'dist/'**, **'node_modules/'** 등을 입력  
+<br/>
 
   1️⃣ Version의 유의적 의미
   - 12.14.1 (Major.Minor.Patch)  
@@ -34,7 +35,8 @@
   = Minor는 기존버전과 호환되는 새로운 기능이 추가된 버전  
   = Patch는 기존버전과 호환되는 버그 및 오타 등이 수정된 버전  
   - ^12.14.1 (Caret 기호)  
-  = Major 버전 안에서 가장 최신 버전으로 업데이트 가능
+  = Major 버전 안에서 가장 최신 버전으로 업데이트 가능  
+<br/>
 
   2️⃣ NPM 프로젝트(예제)의 패키지 버전 일치시키기  
   - 현시점 모듈 버전과 강의 촬영 시점 모듈 버전이 다름으로 인한 모듈 구현에 오류가 생길 수 있음.  
@@ -44,7 +46,8 @@
     - 본문 우측 상단 **'Raw'** 버튼을 ctrl + 클릭
     - 새창을 우클릭 → 강의 폴더에 다른이름으로 저장
     - **'package-lock.json'** 도 동일한 방식으로 진행
-    - Visual Studio Code 터미널에서 **'npm i'** 입력
+    - Visual Studio Code 터미널에서 **'npm i'** 입력  
+<br/>
 
 ---
 🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
@@ -61,7 +64,6 @@
     function getType(data) {
       return Object.prototype.toString.call(data).slice(8,-1);
     }
-
     console.log(getType(null))  // null
     console.log(getType({}))  // object
     console.log(getType([]))  // array
@@ -79,6 +81,7 @@
 
     console.log(getType(123));
     ```
+<br/>
 
 1️⃣ 산술, 할당 연산자
   - 산술 연산자 종류
@@ -93,7 +96,8 @@
     - -=
     - *=
     - /=
-    - %=
+    - %=  
+<br/>
 
 2️⃣ 비교, 논리 연산자
   - 비교 연산자 종류
@@ -104,11 +108,13 @@
   - 논리 연산자 종류
     - && (피연산 값이 모두 true 일 때 true) 
     - || (피연산 값중 한개라도 true 일 때 true)
-    - ! (피연산 값이 true 일 때 false, 피연산 값이 false 일 때 true)
+    - ! (피연산 값이 true 일 때 false, 피연산 값이 false 일 때 true)  
+<br/>
 
 3️⃣ 삼항 연산자
   - 삼항 연산자 종류
-    - data ? '참' : '거짓' (data가 true 일 때 '참', data가 false 일 때 '거짓')
+    - data ? '참' : '거짓' (data가 true 일 때 '참', data가 false 일 때 '거짓')  
+<br/>
 
 4️⃣ 조건문 If else
   - 0~9까지 랜덤한 숫자를 반환해주는 random 함수가 있다고 가정
@@ -125,7 +131,8 @@
     } else {  // random() === 0, 2, 4가 아닐 때 {} 실행문 실행
       console.log('random is not 0, 2, or 4');
     }
-  ```
+  ```  
+<br/>
 
 5️⃣ 조건문 Switch
   - 0~9까지 랜덤한 숫자를 반환해주는 random 함수가 있다고 가정
@@ -146,7 +153,8 @@
     console.log('random is not 0, 2, or 4');
     break;
   }
-  ```
+  ```  
+<br/>
 
 6️⃣ 반복문 For
   - for ( 시작조건; 종료조건; 변화조건 ) {} 
@@ -157,13 +165,89 @@
   // i가 0일때, 실행문이 한번 실행 된 후 i의 값에 1이 더해져 i가 1이 됨
   // i가 1일때, 실행문이 한번 실행 된 후 i의 값에 1이 더해져 i가 2가 됨
   // 위처럼 반복 작업을 하다가, i의 값이 3보다 작지 않을 때, 반복문이 종료됨
-  ```
+  ```  
+<br/>
 
 7️⃣ 변수 유효범위(Scope)
-  - let, const 는 지역변수로써 자신이 선언된 블록 내에서만 유효함 (블록레벨)
+  - let, const 는 지역변수로써 자신이 선언된 블록 내에서만 유효함 (블록레벨)  
+<br/>
 
 8️⃣ 형(Type) 변환
   - Truthy 
     - true, {}, [], 1, 2, 'false', -12, '3.14' ...
   - Falsy
-    - false, '', null, undefined, 0, -0, NaN
+    - false, '', null, undefined, 0, -0, NaN  
+<br/>
+
+---
+🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸  
+### ✅ ***About JavaScript***  
+#### ➡️ 패스트캠퍼스 '한 번에 끝내는 프론트엔드 개발 초격차 패키지 Online.'의 'Part3'의 'Ch3. JS함수' 강의 내용임.
+🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸  
+0️⃣ 함수
+  - 기명함수, 익명함수로 나뉜다
+  - 반복되는 함수는 변수에 담아서 사용하는것이 좋다
+  ```javascript
+  function sum(a, b) { return a + b; }
+  const a = sum(1, 2);
+  const b = sum(2, 3);
+  console.log(a);
+  console.log(b);
+  console.log(a + b); 
+  ```
+  - 함수 블록 내에서 return 이후에 작성된 실행문은 실행되지 않는다.  
+<br/>
+
+1️⃣ 화살표 함수(Arrow function)
+  - parameter가 1개일 경우 축약형 Arrow function 사용 가능
+  ```javascript
+  const double = x => x * 2;
+  console.log(double(3)); // 6
+  ```
+  - return 값이 object일 경우 ()안에 {}로 작성 해야함
+  ```javascript
+  const myAge = x => ({age: x};);
+  console.log(myAge(31));
+  ```
+  - parameter가 2개 이상일 경우의 Arrow function
+  ```javascript
+  const multiply = (x,y) => {
+    return x * y;
+  }
+  ```  
+<br/>
+
+2️⃣ 즉시 실행 함수 (IIFE)
+  - ① 익명함수 선언문을 ()로 감싸고 ()를 한번 더 사용 후 ; 작성
+  - (function)();
+  ```javascript
+  const c = 7;
+  (function () {console.log(c * 2);})();
+  ```
+  - ② 익명함수 실행문을 ()로 감싼 후 ; 작성
+  - ((funtion)());
+  ```javascript
+  const c = 7;
+  (function () {console.log(c*2);}());
+  ```  
+<br/>
+
+3️⃣ 호이스팅 (Hoisting)
+  - 호이스팅은 함수 선언부가 유효범위 최상단으로 끌어올려 읽혀지는 현상
+  - 호이스팅을 이용하여 기명함수를 전체코드의 최하단부에 작성하는 방식을 많이 선호함
+  - 기명함수는 호이스팅 O
+  ```javascript
+  const e = '기명함수는 호이스팅 가능';
+  canHoisting();
+  function canHoisting () { console.log(e);}; // Output: 기명함수는 호이스팅 가능
+  ```
+  - 익명함수는 호이스팅 x
+  ```javascript
+  const f = '익명함수는 호이스팅 불가능';
+  canNotHoisting(); // Output: TypeError: cannotHoisting is not a function
+  const canNotHoisting = () => { console.log(f); };
+  ```  
+<br/>
+
+4️⃣
+5️⃣

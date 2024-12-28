@@ -48,7 +48,12 @@
 
 - 현시점 모듈 버전과 강의 촬영 시점 모듈 버전이 다름으로 인한 모듈 구현에 오류가 생길 수 있음.  
    해당 오류를 예방하기 위해서 아래와 같은 절차를 진행해야함.
-  - <a href="https://github.com/ParkYoungWoong?tab=repositories" title="Github로 이동" target="_blank">https://github.com/ParkYoungWoong?tab=repositories</a> 로 이동해서 해당 강의 repository 클릭 - repository에서 **'package.json'** 을 클릭 - 본문 우측 상단 **'Raw'** 버튼을 ctrl + 클릭 - 새창을 우클릭 → 강의 폴더에 다른이름으로 저장 - **'package-lock.json'** 도 동일한 방식으로 진행 - Visual Studio Code 터미널에서 **'npm i'** 입력  
+  - <a href="https://github.com/ParkYoungWoong?tab=repositories" title="Github로 이동" target="_blank">https://github.com/ParkYoungWoong?tab=repositories</a> 로 이동해서 해당 강의 repository 클릭
+  - repository에서 **'package.json'** 을 클릭
+  - 본문 우측 상단 **'Raw'** 버튼을 ctrl + 클릭
+  - 새창을 우클릭 → 강의 폴더에 다른이름으로 저장
+  - **'package-lock.json'** 도 동일한 방식으로 진행
+  - Visual Studio Code 터미널에서 **'npm i'** 입력  
     <br/>
 
 ---

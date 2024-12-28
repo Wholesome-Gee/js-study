@@ -384,113 +384,115 @@ const canNotHoisting = () => {
   jiyong.getUserInfo(); // Output: jiyong is 31 years old
   ```
 
-        <br/>
+      <br/>
 
-  1️⃣ this
+1️⃣ this
 
-  - 일반 함수는 호출 위치에 따라 this가 정의됨.
+- 일반 함수는 호출 위치에 따라 this가 정의됨.
 
-    ```javascript
-    const chelsea = {
-      color: "blue",
-      getColor: function () {
+  ```javascript
+  const chelsea = {
+    color: "blue",
+    getColor: function () {
+      console.log(this.color);
+    },
+    getColorTimer: function () {
+      setTimeout(function () {
         console.log(this.color);
-      },
-      getColorTimer: function () {
-        setTimeout(function () {
-          console.log(this.color);
-        }, 3000);
-      },
-    };
-    chelsea.getColor(); // Output: blue
-    // chelsea 객체가 getColor 함수를 호출
-    // getColor 함수 내부의 this는 getColor를 호출한 chelsea 객체에서 color를 찾음
-    chelsea.getColorTimer(); // Output: undefined
-    // chelsea 객체가 getColorTimer() 함수를 호출
-    // getColorTimer는 setTimeout() 함수임
-    // setTimeout 함수가 콜백함수 호출
-    // 콜백함수 내부의 this는 콜백함수를 호출 한 setTimeout 함수에서 color를 찾음
-    ```
+      }, 3000);
+    },
+  };
+  chelsea.getColor(); // Output: blue
+  // chelsea 객체가 getColor 함수를 호출
+  // getColor 함수 내부의 this는 getColor를 호출한 chelsea 객체에서 color를 찾음
+  chelsea.getColorTimer(); // Output: undefined
+  // chelsea 객체가 getColorTimer() 함수를 호출
+  // getColorTimer는 setTimeout() 함수임
+  // setTimeout 함수가 콜백함수 호출
+  // 콜백함수 내부의 this는 콜백함수를 호출 한 setTimeout 함수에서 color를 찾음
+  ```
 
-  - 화살표 함수는 화살표 함수가 선언 된 함수의 유효범위에서 this가 정의됨.
+- 화살표 함수는 화살표 함수가 선언 된 함수의 유효범위에서 this가 정의됨.
 
-            ```javascript
-            const arsenal = {
-              color: "red",
-              getColor: () => {
-                console.log(this.color);
-              },
-              getColorTimer: function () {
-                setTimeout(() => {
-                  console.log(this.color);
-                }, 3000);
-              },
-            };
-            arsenal.getColor(); // Output: undefined
-            // arsenal 객체가 getColor 함수를 호출
-            // getColor 함수 내부의 this는 getColor 함수가 선언 된 함수의 유효범위에서 color를 찾으나 getColor 함수는 arsenal 객체에 선언되었고, 함수에 선언된 것이 아님  즉 getColor 함수가 선언된 함수를 못찾음 undefined
-            arsenal.getColorTimer(); // Output: red
-            // arsenal 객체가 getColorTimer 함수를 호출
-            // getColorTimer 함수는 setTimeout 함수임
-            // setTimeout 함수가 콜백함수를 호출
-            // 콜백함수 내부의 this는 콜백함수가 선언 된 setTimeout 함수(즉, getColorTimer)의 유효범위에서 color를 찾음
-            ```
+  ```javascript
+  const arsenal = {
+    color: "red",
+    getColor: () => {
+      console.log(this.color);
+    },
+    getColorTimer: function () {
+      setTimeout(() => {
+        console.log(this.color);
+      }, 3000);
+    },
+  };
+  arsenal.getColor(); // Output: undefined
+  // arsenal 객체가 getColor 함수를 호출
+  // getColor 함수 내부의 this는 getColor 함수가 선언 된 함수의 유효범위에서 color를 찾으나 getColor 함수는 arsenal 객체에 선언되었고, 함수에 선언된 것이 아님  즉 getColor 함수가 선언된 함수를 못찾음 undefined
+  arsenal.getColorTimer(); // Output: red
+  // arsenal 객체가 getColorTimer 함수를 호출
+  // getColorTimer 함수는 setTimeout 함수임
+  // setTimeout 함수가 콜백함수를 호출
+  // 콜백함수 내부의 this는 콜백함수가 선언 된 setTimeout 함수(즉, getColorTimer)의 유효범위에서 color를 찾음
+  ```
 
-        <br/>
-            2️⃣ ES6 Classes
+<br/>
 
-            - ES6 축약형 메소드
+2️⃣ ES6 Classes
 
-              ```javascript
-              const palmer = {
-                team: "chelsea",
-                nation: "ENG"
-                //축약형 메소드
-                getTeam() {
-                  return this.team;
-                }
-              }
-              ```
+- ES6 축약형 메소드
 
-            - class 정의
+  ```javascript
+  const palmer = {
+    team: "chelsea",
+    nation: "ENG"
+    //축약형 메소드
+    getTeam() {
+      return this.team;
+    }
+  }
+  ```
 
-            ```javascript
-            class Player {
-              constructor(team, nation) {
-                this.team = team;
-                this.nation = nation;
-              }
-              getTeam() {
-                return this.team;
-              }
-            }
+- class 정의
 
-            const salah = new Player("Liverpool", "EGY");
-            console.log(salah.getTeam());
-            ```
+  ```javascript
+  class Player {
+    constructor(team, nation) {
+      this.team = team;
+      this.nation = nation;
+    }
+    getTeam() {
+      return this.team;
+    }
+  }
 
-    <br/>
-      3️⃣ 상속(확장)
+  const salah = new Player("Liverpool", "EGY");
+  console.log(salah.getTeam());
+  ```
 
-  - extends 를 사용하여 클래스간의 상속을 시킬 수 있음
+<br/>
 
-        ```javascript
-        class Vehicle {
-          constructor(name, wheel) {
-            this.name = name;
-            this.wheel = wheel;
-          }
-        }
-        const myVehicle = new Vehicle("운송수단", 2);
-        // 확장 (extends)
-        class Bicycle extends Vehicle {
-          constructor(name, wheel, madeInKorea) {
-            super(name, wheel);
-            this.madeInKorea = madeInKorea;
-          }
-        }
-        const myBicycle = new Bicycle("두발", 2, true);
-        const broBicycle = new Bicycle("네발", 4, false);
-        ```
+3️⃣ 상속(확장)
 
-    <br/>
+- extends 를 사용하여 클래스간의 상속을 시킬 수 있음
+
+  ```javascript
+  class Vehicle {
+    constructor(name, wheel) {
+      this.name = name;
+      this.wheel = wheel;
+    }
+  }
+  const myVehicle = new Vehicle("운송수단", 2);
+  // 확장 (extends)
+  class Bicycle extends Vehicle {
+    constructor(name, wheel, madeInKorea) {
+      super(name, wheel);
+      this.madeInKorea = madeInKorea;
+    }
+  }
+  const myBicycle = new Bicycle("두발", 2, true);
+  const broBicycle = new Bicycle("네발", 4, false);
+  ```
+
+  <br/>

@@ -267,7 +267,7 @@ const c = 7;
 ```
 
 - ② 익명함수 실행문을 ()로 감싼 후 ; 작성
-- ((funtion)());
+- ((function)());
 
 ```javascript
 const c = 7;
@@ -335,7 +335,7 @@ const canNotHoisting = () => {
   ```
 
 - clearInterval(setInterval);
-  - 설정 된 setInterva() 취소
+  - 설정 된 setInterval() 취소
   ```javascript
   clearInterval(interval);
   ```
@@ -501,3 +501,260 @@ const canNotHoisting = () => {
   ```
 
   <br/>
+
+---
+
+🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸
+
+### ✅ **_About JavaScript_**
+
+#### ➡️ 패스트캠퍼스 '한 번에 끝내는 프론트엔드 개발 초격차 패키지 Online.'의 'Part4'의 'Ch1. JS데이터' 강의 내용임.
+
+🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸  
+0️⃣ 문자
+  - String mdn 보는 법을 배움
+  - String 생성자의 여러가지 method를 알아봄
+  ```javascript
+  const str = " jiyong0419@naver.com "
+  // indexOf는 특정 단어가 문자열에서 몇번째 칸에 있는지 알려줌
+  str.indexOf("naver") // Output: 12 , 
+  // length는 문자열의 길이를 알려줌
+  str.length // Output: 22 
+  // slice(x,y)는 문자열의 x번째 칸부터 y번째 칸 직전까지 잘라줌
+  str.slice(3,7) // Output: yong
+  // replace('first','second')는 문자열에서 first단어를 second단어로 바꿔줌
+  str.replace('jiyong','wlfyd') // Output: wlfyd0419@naver.com
+  // match()는 정규표현식을 통해서 특정 문자를 일치시켜 그것을 배열데이터로 반환
+  str.match(/.+(?=@)/) 
+  // Output: [' jiyong0419', index: 0, input: ' jiyong0419@naver.com ', groups: undefined]
+  str.match(/.+(?=@)/)[0] //  jiyong0419
+  // trim()은 문자열의 맨 앞, 뒤의 공백을 제거
+  str.trim() // Output: jiyong0419
+  ```
+<br/>
+
+1️⃣ 숫자와 수학
+  - Number 생성자의 대표적인 method를 알아봄
+  ```javascript
+  const pi = 3.141592
+  // toFixed는 인수에 맞게 소수점 자리 수로 표현해줌, 반환값은 String이 됨
+  pi.toFixed(2) // Output: 3.14 (string)
+  // parseInt(string)는 string인수를 정수로 변환해줌 (정수로 변환이 불가한 인수는 삭제)
+  parseInt("3.14abc") // Output: 3
+  // parseFloat(string)는 string인수를 실수로 변환해줌 (실수로 변환이 불가한 인수는 삭제)
+  parseFloat("3.14abc") // Output: 3.14
+  ```
+
+  - Math 전역객체의 여러가지 method를 알아봄
+  ```javascript
+  // Math.abs(number)는 인수의 절대값을 반환
+  Math.abs(-12) // Output: 12
+  // Math.min(x,y,z)는 인수 중 가장 작은 값을 반환
+  Math.min(4,15,33) // Output: 4
+  // Math.max(x,y,z)는 인수 중 가장 큰 값을 반환
+  Math.max(4,15,33) // Output: 15
+  // Math.ceil(float)는 인수를 정수단위로 올림처리
+  Math.ceil(3.14) // Output: 4
+  // Math.floor(float)는 인수를 정수단위로 내림처리
+  Math.floor(3.14) // Output: 3
+  // Math.round(float)는 인수를 정수단위로 반올림처리
+  Math.round(3.14) // Output: 3
+  // Math.random()은 0~1 사이의 무작위 실수 반환
+  Math.random() // Output: 0~1 사이 무작위 실수
+  ```
+
+<br/>
+
+2️⃣ 배열(1)
+  - 배열은 여러 아이템(요소)를 가지는 데이터 구조이다.
+  - 배열의 property와 method를 알아봄
+  ```javascript
+  const numbers = [1,2,3];
+  const strings = ['a','b','c'];
+  // Array.length는 배열의 요소의 개수를 반환
+  numbers.length // Output: 3
+  // Array.find(조건함수)은 배열을 순회하여 조건함수를 만족하는 첫 번째 요소를 반환
+  numbers.find( item => item > 1 ) // Output: 2
+  // Array.concat(array)는 기존 배열과 인수 배열을 결합하여 새로운 배열데이터를 반환 (원본배열은 그대로 유지)
+  numbers.concat(strings) // Output: [1,2,3,'a','b','c']
+  // Array.forEach(callback)는 배열을 순회하며 callback 함수를 실행, 반환값은 없음
+  const returnForEach = numbers.forEach((number, index) => `${number}+${index}`)
+  console.log(returnForEach); // Output: undefined
+  // Array.map(callback)는 배열을 순회하며 callback 함수를 실행, 새로운 배열데이터를 반환
+  const returnMap = numbers.forEach((number, index) => `${number}+${index}`)
+  console.log(returnMap); // Output: [{'1+0'},{'2+1'},{'3+2'}]
+  ```
+<br/>
+
+3️⃣ 배열(2)
+  ```javascript
+  const odds = [1,3,5,7,9];
+  const evens = [2,4,6,8];
+  // Array.filter(조건식)은 배열을 순회하며 조건함수에 만족하는 요소만 새로운 배열로 반환
+  const filter = odds.filter(item => item < 5); // Output: [1,3]
+  // Array.find(조건식)은 배열을 순회하며 조건함수를 만족하는 첫번째 요소만 반환
+  const find = odds.find(item => item > 3); // Output: 5
+  // Array.findIndex(조건식)은 배열을 순회하며 조건함수를 만족하는 첫번째 요소의 index를 반환
+  const findIndex = odds.findIndex(item => item > 3); // Output: 2
+  // Array.includes(요소)는 요소가 배열에 존재하는지 boolean으로 반환
+  const includes = odds.includes(7); // Output: true
+  // Array.push(요소)는 배열의 맨 뒤에 요소를 추가, 원본이 수정됨
+  evens.push(10); // Output: [2,4,6,8,10]
+  // Array.push(요소)는 배열의 맨 앞에 요소를 추가, 원본이 수정됨
+  evens.unshift(0); // Output: [0,2,4,6,8,10]
+  // Array.reverse()는 배열의 순서를 반전, 원본이 수정됨
+  evens.reverse(); // Output: [10,8,6,4,2,0]
+  // Array.splice(x,y,z)는 배열의 x번째 인수부터 y개수만큼 요소를 삭제, 이후 z인수를 끼워 넣음, 원본이 수정됨
+  evens.splice(2, 3, 999) // Output: [10,8,999,0]
+  ```
+<br/>
+
+4️⃣ 객체
+  - 정적메소드(static)는 리터럴({})로 생성된 객체에서는 사용불가
+  ```javascript
+  const citizen = {
+    // key : value
+    name: "Jiyong",
+    age: 31
+  }
+  const citizenEmail = {
+    name: "JeonJiYong",
+    email: "jiyong0419@naver.com",
+  }
+  //Object의 정적(static) 메소드
+  //Object.assign(obj1, obj2, ...)는 obj1의 메모리주소에 있는 객체데이터에 obj2 객체데이터를 덮어쓰기한다.
+  const assign = Object.assign(citizen, citizenEmail); 
+  console.log(assign); // Output: {name:"JeonJiYong, age:31, email:"jiyong0419@naver.com"}
+  console.log(citizen === assign); // Output: true  (assign은 obj1의 메모리주소를 참조)
+  const assign2 = Object.assign({},citizen,citizenEmail); // 새로운 메모리주소에 인수 객체를 병합
+  console.log(citizen === assign2); //false 
+  // Object.keys(obj)는 obj의 properties의 key들을 배열로 반환
+  const keys = Object.keys(citizenEmail)
+  console.log(keys); // Output: ["name","email"]
+  // obj['key']는 obj의 key를 통해 index로 접근할 수 있음
+  console.log(citizenEmail['name']); // Output: "JeonJiYong"
+  const value = keys.map(key=>citizenEmail[key] || "Not Found")
+  console.log(value); // Output: ["JeonJiYong","jiyong0419@naver.com"]
+  ```
+<br/>
+
+5️⃣ 구조 분해 할당
+  - 객체 데이터의 구조 분해 할당
+  ```javascript
+  const person = {
+    name: "JeonJiYong",
+    age: 31,
+    email: "jiyong0419@naver.com",
+  }
+  
+  // keyName: newKeyName 으로 변수명 변경 가능, key="default value"로 기본값 설정 가능
+  const { name, age:korAge, email="no email", address="Korea", gender} = person;
+  console.log(name, korAge, email, address, gender); 
+  // Output: "JeonJiYong", 31, "jiyong0419@naver.com", "Korea", undefined
+  ```  
+  
+  - 배열 데이터의 구조 분해 할당
+  ```javascript
+    const user = ["amie", "ben", "choi", "david", "elsa"]
+    const [a,b,c,d,e,f] = user
+    console.log(a,b,c,d,e,f); 
+    // Output: "amie", "ben", "choi", "david", "elsa", "undefined"
+    const [,,,d,,f] = user
+    console.log(d,f);
+    // Output: "david", undefined
+  ```
+<br/>
+
+6️⃣ 전개 연산자
+  - 전개 연산자는 ...을 통해 배열의 아이템들을 쉼표로 구분하여 나열한다
+  ```javascript
+  const arr = ['ali', 'bli', 'cli', 'dli', 'eli']
+  console.log(arr); // Output:  ['ali', 'bli', 'cli', 'dli, 'eli']
+  console.log(arr[0], arr[1], arr[2], arr[3], arr[4]); // Output: ali bli cli dli eli
+  console.log(...arr); // Output: ali bli cli dli eli
+  
+  function toObject(a, b, c) {
+    return {
+      a, // a:a,
+      b, // b:b,
+      c, // c:c,
+    }
+  }
+  console.log(toObject(...arr)); // Output: {a:'ali', b:'bli', c:'cli'}
+  
+  function toObject2(a,b,...c) // 마지막 인수에 ...을 사용한것을 rest parameter라고 하며, 나머지 배열의 아이템을 전달 받아 배열로 묶는다.
+  console.log(toObject2(...arr)); // Output: {a:'ali', b:'bli', c:['cli','dli','eli']}
+  ```
+ <br/>
+
+7️⃣ 불변성
+  - 변수를 생성하면 변수는 값이 들어있는 '메모리 주소'를 참조한다.
+  - '메모리 주소'에 들어있는 값이 원시 데이터라면 그 값은 변경할 수 없다.  
+    (만일 변수의 값을 변경하면 변수는 변경된 값이 들어있는 새로운 '메모리 주소'를 참조하는것, 기존 '메모리 주소'에 담겨있던 변수의 값이 변경되는 것이 아니다.)
+  - '메모리 주소'에 들어있는 값이 참조형 데이터라면 참조형 데이터 내부의 값(객체의 멤버, 배열의 요소, 함수의 실행문)은 변경 할 수 있다.  
+    (참조형 데이터 내부의 값을 변경하면 변수가 참조하는 '메모리 주소'내부의 참조형 데이터 내부의 값이 변경된다.)
+  - 원시 데이터 (String, Number, Boolean, Symbol, undefined, null)
+  ```javascript
+  let var1 = '1번 메모리 주소' // var1은 '1번 메모리 주소'를 참조한다.
+  let var2 = '2번 메모리 주소' // var2는 '2번 메모리 주소'를 참조한다.
+  console.log(var1 === var2); // Output: false
+  var1 = var2 // var2는 var1의 '메모리 주소'를 참조한다.
+  console.log(var1 === var2); // Output: true
+  ```  
+  - 참조형 데이터 (Array, Object, Function)
+  ```javascript
+  let var1 = { memory : 1 } // var1은 '1번 메모리 주소'를 참조한다.
+  let var2 = { memory : 2 } // var2는 '2번 메모리 주소'를 참조한다.
+  console.log(var1 === var2); // Output: false  →  var1과 var2가 참조하는 '메모리 주소'가 다름
+  var2.memory = 1 // var2의 memory property를 var1의 memory property와 일치
+  console.log(var1 === var2); // Output: false  → var1과 var2가 참조하는 '메모리 주소'가 여전히 다름
+  var1 = var2 // var2가 var1의 '메모리 주소'를 참조하게 됨
+  console.log(var1 === var2); // Output: true  → var1과 var2가 참조하는 '메모리 주소'가 같음
+  let var3 = var1 // var3이 var1의 '메모리 주소'를 참조함.
+  console.log(var1 === var2 === var3); // Output: true → var1과 var2, var3이 모두 같은 '메모리 주소'를 참조함.
+  ```
+<br/>
+
+8️⃣ 얕은 복사와 깊은 복사 
+  - 참조형 데이터(Obj,Arr,Func)를 같은 '메모리 주소'를 참조하지 않게 복사할 경우  
+    사용하는 2가지 방식이 있다. (얕은복사 / 깊은복사)
+  - 참조형 데이터 내부에 또 다른 참조형 데이터가 존재할 땐 *깊은복사*가 안전하다
+  - 얕은복사
+  ```javascript
+  // 얕은복사는 2개의 참조형 데이터가 서로 다른 '메모리 주소'를 참조하지만, 
+  // 참조형 데이터 내부의 또 다른 참조형 데이터는 같은 '메모리 주소'를 참조한다.
+  
+  // 얕은복사 1
+  const obj1 = { name: 'chelsea', phone: [010-1234-5678]} // obj1은 '1', obj1.phone은 '1-2'의 '메모리 주소'에 담김.
+  const obj2 = Object.assign({},obj1); // obj2은 '2', obj2.phone은 '1-2'의 '메모리 주소'에 담김.
+  console.log(obj1 === obj2); // Output: false → obj1과 obj2는 다른 '메모리 주소'를 참조한다.
+  console.log(obj1.phone === obj2.phone); // Output: true → 두 객체의 phone property는 같은 '메모리 주소'를 참조한다
+
+  //얕은복사 2
+  const obj3 = { name: 'chelsea', phone: [010-1234-5678]} // obj3은 '3', obj3.phone은 '3-2'의 '메모리 주소'에 담김.
+  const obj4 = {...obj3} // obj4는 '4', obj4.phone은 '3-2'의 '메모리 주소'에 담김.
+  console.log(obj3 === obj4); // Output: false →  obj3과 obj4는 다른 '메모리 주소'를 참조한다.
+  console.log(obj3 === obj4); // Output: true → 두 객체의 phone property는 같은 '메모리 주소'를 참조한다.   
+  ```
+  - 깊은복사는 lodash library를 통해 구현한다.
+    - ```npm i lodash```
+    - js 파일 상단에 ```import _ from 'lodash' ``` 
+    ```javascript
+    import _ from 'lodash';
+
+    const obj1 = { name: 'chelsea', phone: [010-1234-5678]} // obj1은 '1', obj1.phone은 '1-2'의 '메모리 주소'에 담김.
+    const obj2 = _.cloneDeep(obj1); // obj2는 '2', obj2.phone은 '2-2'의 '메모리 주소'에 담김.
+    console.log(obj1 === obj2); // false → obj1은 '1', obj2는 '2'의 '메모리 주소'에 담김.
+    console.log(obj1.phone === obj2.phone); // false → obj1.phone은 '1-2', obj2.phone은 '2-2'의 '메모리 주소'에 담김.
+    ```
+  <br/>
+
+---
+
+🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸
+
+### ✅ **_About JavaScript_**
+
+#### ➡️ 패스트캠퍼스 '한 번에 끝내는 프론트엔드 개발 초격차 패키지 Online.'의 'Part4'의 'Ch2. JS 데이터 실습' 강의 내용임.
+
+🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸  

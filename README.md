@@ -758,3 +758,73 @@ const canNotHoisting = () => {
 #### ➡️ 패스트캠퍼스 '한 번에 끝내는 프론트엔드 개발 초격차 패키지 Online.'의 'Part4'의 'Ch2. JS 데이터 실습' 강의 내용임.
 
 🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸  
+0️⃣ 가져오기, 내보내기
+- 기본통로로 export 하기 (1파일당 1개의 변수만 설정가능)
+  - ```export default 익명데이터``` 
+    ```javascript
+    export default function (name) {console.log(name);};
+    ```  
+- 기명통로로 export 하기 (1파일당 여러개의 변수 설정 가능)
+  - ```export 기명데이터```
+    ```javascript
+    export function callName (name) {console.log(name);};
+    export const name = "Ali";
+    ```  
+- 1개의 파일에선 1개의 기본통로 export와 여러개의 기명통로 export를 동시에 사용할 수 있다.  
+- import 하기
+  - 기본통로의 데이터 import 하기
+  ```javascript
+  import 임의변수명 from '파일경로'
+  ```
+  - 기명통로의 데이터 import 하기
+  ```javascript
+  // 기명통로의 데이터 변수명을 그대로 사용함.
+  import { 변수명1, 변수명2 } from '파일경로'
+  // as 를 통해서 변수명을 임의변수명으로 설정 가능함.
+  import { 변수명1 as 임의변수명 } from '파일경로'
+  // * 를 통해서 파일에서 export된 변수들을 객체로 묶어서 한번에 불러올 수 있음.
+  import * from '파일경로'
+  import * as 임의변수명 from '파일경로'
+  ```
+<br/>
+
+1️⃣ Lodash 사용법
+- lodash에서 자주 사용하는 method
+  - ```_.uniqBy``` ➡️ 배열안에 중복된 속성 값들을 제거 후 새로운 배열을 반환
+  ```javascript
+  // _.uniqBy(arr, 속성)
+  import _ from 'lodash';
+  const group = [{name: 'ali'},{name: 'bli'}, {name: 'bli'}, {name: 'cli'}]
+
+  console.log(_.uniqBy(group,'name')); 
+  // Output: [{name: 'ali'}, {name: 'bli'}, {name: 'cli'}]
+  ```  
+  - ```_.unionBy``` ➡️ 여러 배열들의 중복된 속성 값들을 제거 후 하나의 배열로 합친 후 반환  
+  ```javascript
+  import _ from 'lodash';
+  const group1 = [{id: 1, name: 'ali'},{id: 2, name:'bli'},{id: 3, name:'cli'}]
+  const group2 = [{id: 1, name: 'ali'},{id: 2, name:'bli'},{id: 4, name:'cane'}]
+  const group3 = _.unionBy(group1, group2, 'id')
+  
+  console.log(group3); // [{id: 1, name: 'ali'}, {id: 2, name: 'bli'}, {id: 3, name: 'cli'}, {id: 4, name: 'cane'}]
+  ```
+<br/>
+
+2️⃣ JSON
+- .json 파일에선 *string*, *number*, *boolean*, *null*, *{}*, *[]* 데이터만 사용 (undefined 불가)
+- .json 파일에선 *string*을 큰 따옴표로만 표현
+- .json 파일에선 *object*안의 key를 큰 따옴표로 표현
+- .json 파일에 작성되는 모든것은 *'String'*형태이고, 그것이 js 파일에 해석되면서 *'Object'* 형태로 변환
+- ```JSON.stringify(obj)``` ➡️ js의 'object'를 JSON의 'string'으로 변환
+- ```JSON.parse(jsonStr)``` ➡️ JSON의 'string'을 js의 'object'으로 변환
+<br/>
+
+3️⃣ Storage
+- 4
+<br/>
+
+4️⃣ OMDb API
+- 5
+<br/>
+
+---

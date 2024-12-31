@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import axios from 'axios'
 
 console.log("🔸🔸가져오기,내보내기🔸🔸");
 /* 기본통로로 export 하기 ( 1파일당 1개의 변수만 설정가능)
@@ -88,7 +89,7 @@ localStorage.getItem('user'); // localStorage value는 string이므로 JSON.pars
 
 // localStorage에 데이터 제거하기 (removeItem)
 // localStorage.removeItem('key')
-localStorage.removeItem('user')
+// localStorage.removeItem('user')
 
 // localStorage에 데이터 수정하기
 const str1 = localStorage.getItem('user') // localStorage의 수정할 데이터의 key를 이용해 value를 가져온다.
@@ -102,12 +103,26 @@ console.log("🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹");
 
 '▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️'
 
-console.log("🔸🔸🔸 OMDb API 🔸🔸🔸"
-  // ? 는 
-  // & 는
-  // 웹사이트 주소에 ?, & 작성하는 이런걸 쿼리스트링이라고 함 쿼리는 하나의 검색이라고 이해하면 된다.
-  // 주소?속성=값&속성=값&속성=값...
-  // http://www.omdbapi.com/?apikey=1602f733&s=영화제목
-  
-);
+console.log("🔸🔸🔸 OMDb API 🔸🔸🔸");
+  // OMDB API는 영화정보를 요청할 수 있는 API
+  // APIKEY탭에서 APIKEY를 발급받고 ? 는 
+  // 도메인의 쿼리스트링 (쿼리는 검색이라는 뜻으로 이해)
+  // 도메인의 ?는 쿼리스트링의 시작부분을 의미
+  // 도메인의 &는 도메인 parameter의  구분을 의미
+  // https://www.omdbapi.com/?apikey=7035c60c&s=frozen → json 문법이 적혀있는 페이지 출력됨
+  // axios 패키지를 활용하여 json 페이지를 main.js에서 처리할 수 있도록 할거임
+  // 'npm i axios'
+  function fetchMovies() {
+    axios.get('https://www.omdbapi.com/?apikey=7035c60c&s=frozen')
+    .then((response) => {
+      console.log(response);
+      const h1El = document.querySelector('h1')
+      const imgEl = document.querySelector('img')
+      h1El.textContent = response.data.Search[0].Title;
+      imgEl.src = response.data.Search[0].Poster;
+    })
+    }
+  fetchMovies();
+
+
 console.log("🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸");

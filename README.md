@@ -820,11 +820,64 @@ const canNotHoisting = () => {
 <br/>
 
 3️⃣ Storage
-- 4
+- Browser에는 localStorage와 sessionStorage가 있다.
+  - 'F12' → 'Application' → 'localStorage' / 'sessionStorage'
+- localStorage는 반영구적 / sessionStorage 일시적으로 데이터를 보존한다.
+  ```javascript
+  const user = { name:'ali' }
+  
+  // Storage는 json 문자열 데이터를 해석하기 때문에 json 문자열로 변환해주어야 한다.
+  localStorage.setItem('user', JSON.stringify(user))
+  
+  // 반대로 Storage의 json데이터를 가져올땐 js로 변환해주어야 한다.
+  const getUser = JSON.parse(localStorage.getItem('user'))
+
+  // Storage의 데이터를 수정하기 위해선, 
+  // 먼저 Storage의 데이터를 js로 변환 후 수정작업을 하고, 
+  // 다시 json 문자열로 변환하여 Storage에 저장한다
+  // 'lowdb'를 이용하면 이 과정을 더욱 쉽게 할 수 있다고함.
+  getUser.name = 'bli';
+  localStorage.setItem('user', JSON.stringify(getUser));
+
+  // localStorage의 데이터를 삭제하는 방법
+  localStorage.remove('user')
+    ```
 <br/>
 
 4️⃣ OMDb API
-- 5
+- OMDb API는 영화정보를 요청할 수 있는 API다.
+- APIKEY탭에서 APIKEY를 발급받아서 사용한다
+  - ```https://www.omdbapi.com/?apikey=7035c60c&s=frozen```
+  - ? 는 쿼리스트링의 시작부분, &는 각 도메인 parameter의 구분을 의미한다.
+- OMDb API는 axios패키지를 활용하여 js에서 활용한다.
+  - ```npm i axios```
+  ```javascript
+  import axios from 'axios';
+
+  function fecthMovie() {
+    axios.get('https://www.omdbapi.com/?apikey=7035c60c&s=frozen') //도메인 입력
+    // then 메소드는 get 메소드로 얻은 페이지 정보를 response parameter로 받고, 다음 실행문을 실행
+    .then((response) => { 
+      console.log(console.log(response));
+      console.log('title: ', response.data.Search[0].Title);
+      console.log('poster: ', response.data.Search[0].Poster);      
+    })
+  }
+  ```
 <br/>
 
 ---
+
+🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸
+
+### ✅ **_About JavaScript_**
+
+#### ➡️ 패스트캠퍼스 '한 번에 끝내는 프론트엔드 개발 초격차 패키지 Online.'의 'Part4'의 'Ch3. 정규표현식' 강의 내용임.
+
+🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸  
+0️⃣ 개요 및 프로젝트 시작
+1️⃣ 정규식 생성
+2️⃣ 메소드
+3️⃣ 플래그(옵션)
+4️⃣ 패턴(표현) (1)
+5️⃣ 패턴(표현) (2)

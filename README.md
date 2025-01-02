@@ -957,12 +957,83 @@ console.log(obj3 === obj4); // Output: true → 두 객체의 phone property는 
   - 일치하는 문자를 대체
 
 ```js
+const lorem = `
+  010-1234-5678
+  thesecon@gmail.com
+  https://www.omdbapi.com/?apikey=7035c60c&s=frozen
+  The quick brown fox jumps over the lazy dog.
+  abbcccdddd
+  http://localhost:1234
+  동해물과_백두산이 마르고 닳도록
+  `;
+const regex = /[123]/g;
 
+console.log(regex.test(lorem)); // true
+console.log(lorem.match(regex)); // [123, 123]
+console.log(lorem.replace(regex, 456)); // 010-4564-5678...localhosy:4564...닳도록
 ```
 
 <br/>
 
 3️⃣ 플래그(옵션)
 
+- g - 일치하는거 여러개 찾기
+- i - 대소문자 무시
+- m - 각각의 줄의 시작점과 끝점을 하나의 시작점과 끝점으로 보겠다는 선언
+- \ - 특수문자들을 문자로 보겠다는 선언
+- $ - 문장의 끝이 $앞에 있는 문자여야 한다고 선언
+
+```js
+console.log(lorem.match(/\.?/gim)); // ['.','.','.','.']
+console.log(lorem.match(/\.$/gim)); // ['.']
+```
+
+<br/>
+
 4️⃣ 패턴(표현) (1)
+
+- ^ab - 줄이 ab로 시작
+- ab& - 줄이 ab로 끝
+- . - 한개의 아무 문자
+- a|b - a 또는 b와 일치
+- ab? - b가 없거나 b와 일치
+- {3} - 3개 연속 일치
+- {3,} - 3개 이상 연속 일치
+- {3,4} - 3~4개 연속 일치
+
+```js
+console.log(lorem.match(/com/g)); // ['com','com']
+console.log(lorem.match(/jiyong|com/g)); // ['com','com']
+console.log(lorem.match(/https/g)); // ['https']
+console.log(lorem.match(/https?/g)); // ['https','http']
+console.log(lorem.match(/d{2}/g)); // ['dd','dd']
+console.log(lorem.match(/d{2,}/g)); // ['dddd']
+console.log(lorem.match(/d{2,3}/g)); // ['ddd']
+console.log(lorem.match(/\w{2,3}/g/)); //['010','123','567'...'ost','123']
+console.log(lorem.match(/\b\w{3,4}\b/g)); // ['010','1234','5678'...'dog','http','1234']
+```
+
+<br/>
+
 5️⃣ 패턴(표현) (2)
+
+- [abc] - a,b,c 중 한 문자와 일치
+- [a-z] - a ~ z까지 문자와 일치
+- [A-Z] - A ~ Z까지 문자와 일치
+- [0-9] - 0 ~ 9까지 문자와 일치
+- [가-힣] - 가 ~ 힣까지 문자와 일치
+- \w - 영문 + 숫자 + 언더바 중 하나와 일치
+- \b - 영문 + 숫자 + 언더바와 불일치
+- \d - 숫자와 일치
+- \s - space, tab과 일치
+- (?=) - 앞쪽 일치
+- (?<=) - 뒤쪽 일치
+
+```js
+console.log(lorem.match(/[가-힣]{1,}/g)); // ['동해물과','백두산이','마르고','닳도록']
+console.log(lorem.match(/\bf\w{1,g}/g)); // ['frozen','fox']
+console.log(lorem.match(/\d{1,}/g)); // ['010','1234'...'1234']
+console.log(lorem.replace(/\s/g, "")); // [010-1234-5678thesecon@...닳도록]
+console.log(lorem.match(/.{1,}(?=\@)/g)); // ['    thesecon']
+console.log(lorem.match(/(?<=\@).{1,}/g)); // ['gmail.com']
+```

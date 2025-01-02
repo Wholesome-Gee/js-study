@@ -16,7 +16,7 @@ console.log("🔸🔸 정규식 메소드 🔸🔸");
 const lorem = `
     010-1234-5678
     thesecon@gmail.com
-    https://www.omdbapi.com/?apikey=7035c60c&s=frozen.
+    https://www.omdbapi.com/?apikey=7035c60c&s=frozen
     The quick brown fox jumps over the lazy dog.
     abbcccdddd
     http://localhost:1234
@@ -39,8 +39,8 @@ console.log("🔹🔹🔹플래그(옵션)🔹🔹🔹");
 // m - 각각의 줄을 하나의 시작점과 끝점으로 보겠다는 선언 (multi-line)
 // | - . 같이 정규식에서 하나의 실행적인 역할을 하는 기호들을 문자로 보겠다는 선언
 // $ - 문장의 끝이 $앞에 있는 기호(문자)여야 한다고 선언
-console.log(lorem.match(/\?/gim));
-console.log(lorem.match(/\?$/gim));
+console.log(lorem.match(/\./gim));
+console.log(lorem.match(/\.$/gim));
 console.log("🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹");
 
 ("▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️▫️");
@@ -57,11 +57,11 @@ console.log(lorem.match(/jiyong|com/g));
 console.log(lorem.match(/https/g));
 console.log(lorem.match(/https?/g));
 // {3} - 3개 연속 일치
-console.log(lorem.match(/b{2}/g));
+console.log(lorem.match(/d{2}/g));
 // [3,} - 3개 이상 연속 일치
-console.log(lorem.match(/b{2,}/g));
+console.log(lorem.match(/d{2,}/g));
 // {3,5} - 3~5개 연속 일치
-console.log(lorem.match(/b{2,4}/g));
+console.log(lorem.match(/d{2,3}/g));
 // \w - 숫자를 포함한 영어 알파벳
 console.log(lorem.match(/\w{2,3}/g));
 // \b\w{2,3}\b - 앞 뒤 특수문자를 기준삼아 2~3글자의 숫자+알파벳 조합
